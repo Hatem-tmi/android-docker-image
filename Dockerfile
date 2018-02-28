@@ -11,7 +11,7 @@ ENV GRADLE_HOME /opt/gradle/gradle-${GRADLE_VERSION}
 
 
 # Update and Install Git and Maven and ftp-upload
-RUN apt-get update && apt-get --assume-yes install -y zip unzip apt-utils wget git maven jq
+RUN apt-get update && apt-get --assume-yes install -y zip unzip apt-utils wget git maven jq ruby-dev ruby-build
 
 
 ## Install Android SDK
@@ -77,6 +77,9 @@ RUN mkdir /opt/gradle && unzip -d /opt/gradle gradle-${GRADLE_VERSION}-bin.zip
 
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 RUN gradle -v
+
+## Install Fastlane
+RUN gem install fastlane
 
 # Cleaning
 RUN apt-get clean
