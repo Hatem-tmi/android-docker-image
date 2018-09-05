@@ -1,8 +1,8 @@
 FROM openjdk:8-jdk
 MAINTAINER Hatem Toumi
 
-ENV ANDROID_TARGET_SDK="27" \
-    ANDROID_SDK_BUILD_TOOLS="27.0.2" \
+ENV ANDROID_TARGET_SDK="28" \
+    ANDROID_SDK_BUILD_TOOLS="28.0.2" \
     ANDROID_HOME="/opt/android-sdk-linux"
 ENV ANDROID_SDK_ROOT="$ANDROID_HOME"
 
@@ -71,7 +71,7 @@ RUN which android
 ## Install Gradle
 #RUN sdk install gradle
 
-RUN wget https://downloads.gradle.org/distributions/gradle-4.5.1-bin.zip
+RUN wget https://downloads.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip
 RUN ls -al
 RUN mkdir /opt/gradle && unzip -d /opt/gradle gradle-${GRADLE_VERSION}-bin.zip
 
